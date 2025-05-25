@@ -6,7 +6,7 @@ API REST desenvolvida para o desafio integrador da empresa **Mottu**, como parte
 
 - Icaro Albuquerque (RM555131)
 - Guilherme Paes Camargo (RM555166
-- Bianca Vitoria Galo Monteiro (RM556270)
+- Bianca Vitoria Galo Monteiro (RM556270 - 2TDSPZ)
 
 ## 🚀 Tecnologias utilizadas
 
