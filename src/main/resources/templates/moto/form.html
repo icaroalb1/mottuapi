@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Cadastro de Moto')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: header}"></header>
+<main>
+	<section>
+		<h2 th:text="${moto.id} != null ? 'Editar Moto' : 'Nova Moto'"></h2>
+		<form th:action="${moto.id} != null ? @{'/moto/atualizar/' + ${moto.id}} : @{/moto}" th:object="${moto}" method="post">
+			<div>
+				<label>Placa</label>
+				<input type="text" th:field="*{placa}" />
+				<div th:if="${#fields.hasErrors('placa')}" th:errors="*{placa}"></div>
+			</div>
+			<div>
+				<label>Modelo</label>
+				<input type="text" th:field="*{modelo}" />
+				<div th:if="${#fields.hasErrors('modelo')}" th:errors="*{modelo}"></div>
+			</div>
+			<div>
+				<label>Status</label>
+				<select th:field="*{status}">
+					<option th:each="s : ${status}" th:value="${s}" th:text="${s}"></option>
+				</select>
+			</div>
+			<div>
+				<label>Ligada</label>
+				<input type="checkbox" th:field="*{ligada}" />
+			</div>
+			<button type="submit">Salvar</button>
+		</form>
+	</section>
+</main>
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html> 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head(title)">
+	<meta charset="UTF-8" />
+	<title th:text="${title}">Mottu</title>
+	<link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<header th:fragment="header">
+	<h1>Mottu</h1>
+	<nav>
+		<a th:href="@{/}">Home</a>
+		<a th:href="@{/moto}" sec:authorize="hasRole('ADMIN')">Motos</a>
+		<a th:href="@{/mov}">Movimentações</a>
+		<a th:href="@{/logout}">Sair</a>
+	</nav>
+</header>
+<main>
+	<div th:replace="~{::section}"></div>
+</main>
+<footer th:fragment="footer">
+	<small>© 2025 Mottu</small>
+</footer>
+</body>
+</html> 

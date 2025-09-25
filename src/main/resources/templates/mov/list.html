@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Movimentações')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: header}"></header>
+<main>
+	<section>
+		<h2>Movimentações</h2>
+		<p>
+			<a th:href="@{/mov/checkin}">Novo Check-in</a>
+			<a th:href="@{/mov/checkout}">Novo Check-out</a>
+		</p>
+		<table>
+			<thead>
+			<tr><th>ID</th><th>Moto</th><th>Vaga</th><th>Tipo</th><th>Data/Hora</th></tr>
+			</thead>
+			<tbody>
+			<tr th:each="mv : ${movs}">
+				<td th:text="${mv.id}"></td>
+				<td th:text="${mv.moto != null ? mv.moto.placa : ''}"></td>
+				<td th:text="${mv.vaga != null ? mv.vaga.id : ''}"></td>
+				<td th:text="${mv.tipo}"></td>
+				<td th:text="${#temporals.format(mv.dataHora, 'dd/MM/yyyy HH:mm')}"></td>
+			</tr>
+			</tbody>
+		</table>
+	</section>
+</main>
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html> 

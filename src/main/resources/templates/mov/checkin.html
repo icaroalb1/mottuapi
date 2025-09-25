@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Check-in')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: header}"></header>
+<main>
+	<section>
+		<h2>Check-in</h2>
+		<form th:action="@{/mov/checkin}" method="post">
+			<label>Moto</label>
+			<select name="motoId">
+				<option th:each="m : ${motos}" th:value="${m.id}" th:text="${m.placa} + ' - ' + ${m.modelo}"></option>
+			</select>
+			<label>Vaga</label>
+			<select name="vagaId">
+				<option th:each="v : ${vagas}" th:value="${v.id}" th:text="${v.id} + (v.ocupada ? ' (ocupada)' : '')"></option>
+			</select>
+			<button type="submit">Confirmar</button>
+		</form>
+	</section>
+</main>
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html> 
