@@ -2,6 +2,12 @@
 
 Sistema web completo desenvolvido com Spring Boot para gerenciamento de motos, vagas e movimentações, desenvolvido para o Challenge Mottu 2025.
 
+## Integrantes
+RM556270 - Bianca Vitoria - 2TDSPZ
+RM555166 - Guilherme Camargo - 2TDSPM
+RM555131 - Icaro Americo - 2TDSPM
+
+
 ## 🚀 Tecnologias Utilizadas
 
 - **Spring Boot 3.4.5** - Framework principal
