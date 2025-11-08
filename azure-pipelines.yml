@@ -1,0 +1,35 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: build_and_deploy
+  displayName: "Build, Test e Deploy"
+  steps:
+    - checkout: self
+
+    - task: UseJavaVersion@1
+      inputs:
+        versionSpec: '21'
+        jdkArchitecture: 'x64'
+
+    - script: mvn clean package
+      displayName: "Build Maven"
+
+    - script: mvn test
+      displayName: "Run Tests"
+
+    - script: |
+        az login --service-principal -u $(AZURE_SP_USER) -p $(AZURE_SP_PASS) --tenant $(AZURE_TENANT)
+        az acr login --name $(ACR_NAME)
+        docker build -t $(ACR_NAME).azurecr.io/myimage:latest .
+        docker push $(ACR_NAME).azurecr.io/myimage:latest
+      displayName: "Build & Push Docker"
+
+    - script: |
+        az container create -g $(RESOURCE_GROUP) --name myapp \
+        --image $(ACR_NAME).azurecr.io/myimage:latest \
+        --cpu 1 --memory 1.5 --ports 80 --dns-name-label myuniqueapp
+      displayName: "Deploy ACI"
