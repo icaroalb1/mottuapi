@@ -22,11 +22,12 @@ jobs:
           export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
           echo "##vso[task.setvariable variable=JAVA_HOME]$JAVA_HOME"
 
+          export db_url_azure=${db_url_azure}
+          export db_user_azure=${db_user_azure}
+          export db_password_azure=${db_password_azure}
+
     - script: |
-        java -version
-        mvn -v
-        ls -l 
-        mvn clean package -DskipTests 
+        mvn clean package
       displayName: "Build Maven"
 
     - script: mvn test
