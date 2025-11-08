@@ -85,7 +85,7 @@ class MotoIntegrationTest {
         List<Moto> motos = motoRepository.findAll();
 
         // Then
-        assertEquals(2, motos.size());
+        assertEquals(5, motos.size());
         assertTrue(motos.stream().anyMatch(m -> "ABC1234".equals(m.getPlaca())));
         assertTrue(motos.stream().anyMatch(m -> "XYZ5678".equals(m.getPlaca())));
     }

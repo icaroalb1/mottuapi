@@ -12,7 +12,12 @@
 		<a th:href="@{/}">Home</a>
 		<a th:href="@{/moto}" sec:authorize="hasRole('ADMIN')">Motos</a>
 		<a th:href="@{/mov}">Movimentações</a>
-		<a th:href="@{/logout}">Sair</a>
+		<form th:action="@{/logout}" method="post" style="display: inline-block; margin: 0; padding: 0;">
+			<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+			<button type="submit" style="background: none; border: none; color: #007bff; text-decoration: underline; cursor: pointer; padding: 0; font: inherit;">
+				Sair
+			</button>
+		</form>
 	</nav>
 </header>
 <main>
