@@ -25,6 +25,7 @@ jobs:
           export db_url_azure=$(db_url_azure)
           export db_user_azure=$(db_user_azure)
           export db_password_azure=$(db_password_azure)
+          printenv | grep db_ 
 
     - script: |
         mvn clean package
