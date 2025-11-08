@@ -15,16 +15,15 @@ jobs:
       inputs:
         targetType: 'inline'
         script: |
-          sudo apt update
-          sudo apt install openjdk-21-jdk -y
-          sudo update-alternatives --set java /usr/lib/jvm/java-21-openjdk-amd64/bin/java
-          sudo update-alternatives --set javac /usr/lib/jvm/java-21-openjdk-amd64/bin/javac
-          export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
-          echo "##vso[task.setvariable variable=JAVA_HOME]$JAVA_HOME"
+          # sudo apt update
+          # sudo apt install openjdk-21-jdk -y
+          # sudo update-alternatives --set java /usr/lib/jvm/java-21-openjdk-amd64/bin/java
+          # sudo update-alternatives --set javac /usr/lib/jvm/java-21-openjdk-amd64/bin/javac
+          # export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+          # echo "##vso[task.setvariable variable=JAVA_HOME]$JAVA_HOME"
 
-          export db_url_azure=$(db_url_azure)
-          export db_user_azure=$(db_user_azure)
-          export db_password_azure=$(db_password_azure)
+          export RESOURCE_GROUP=$(RESOURCE_GROUP)
+          printenv | grep RESOURCE
 
     - script: |
         mvn clean package
