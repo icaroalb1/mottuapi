@@ -18,6 +18,7 @@ RM555131 - Icaro Americo - 2TDSPM
 - **PostgreSQL** - Banco de dados principal
 - **Maven** - Gerenciamento de dependências
 - **Docker** - Containerização (opcional)
+- **Azure pipelines** build, test e deploy automático da aplicação.
 
 ## 📋 Funcionalidades
 

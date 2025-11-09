@@ -47,7 +47,7 @@ jobs:
         az container create \
           --resource-group rg-sprint-4 \
           --name mottu-api-container \
-          --image icaroalb1/mottu-sprint-4:mottu-api \
+          --image $(dockerhub_username)/mottu-sprint-4:mottu-api \
           --cpu 1 \
           --memory 1.5 \
           --ports 8081 \
@@ -55,7 +55,7 @@ jobs:
           --os-type Linux \
           --dns-name-label mottu-api-demo \
           --registry-login-server docker.io \
-          --registry-username icaroalb1 \
+          --registry-username $(dockerhub_username) \
           --registry-password $(dockerhub_password)
         
       displayName: "Deploy ACI"
