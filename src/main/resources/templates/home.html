@@ -5,7 +5,7 @@
 <header th:replace="~{fragments/layout :: header}"></header>
 <main>
 	<section>
-		<h2>Seja bem-vindo, <span th:text="${usuario}"></span></h2>
+		<h2>Bem-vindo, <span th:text="${usuario}"></span></h2>
 		<p sec:authorize="hasRole('ADMIN')">Você está logado como ADMIN. Você pode gerenciar motos e movimentações.</p>
 		<p sec:authorize="hasRole('OPERADOR')">Você está logado como OPERADOR. Você pode realizar movimentações.</p>
 	</section>
