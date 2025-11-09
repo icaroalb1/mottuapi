@@ -41,8 +41,9 @@ jobs:
         printenv | grep dockerhub_password
         docker login -u icaroalb1 -p $(dockerhub_password)
         docker build -t mottu-api .
-        docker tag mottu-api $(dockerhub_username)/mottu-api:latest
-        docker push icaroalb1/mottu-sprint-4:mottu-api
+        docker tag mottu-api icaroalb1/mottu-sprint-4:mottu-api
+        docker image ls
+        docker push icaroalb1/mottu-sprint-4:icaroalb1/mottu-sprint-4:mottu-api
       displayName: "Build & Push Docker"
 
     - script: |
