@@ -1,5 +1,6 @@
 FROM eclipse-temurin:21-jdk
 
+EXPOSE 8081
 VOLUME /tmp
 ARG JAR_FILE=target/*.jar
 

@@ -41,20 +41,26 @@ jobs:
         docker login -u icaroalb1 -p $(dockerhub_password)
         docker build -t mottu-api .
         docker tag mottu-api icaroalb1/mottu-sprint-4:mottu-api
-        docker image ls
         docker push icaroalb1/mottu-sprint-4:mottu-api
 
       displayName: "Build & Push Docker"
 
     - script: |
-        az container create 
+
+        az provider register --namespace Microsoft.ContainerInstance
+        
+        az container create \
           --resource-group rg-sprint-4 \
           --name mottu-api-container \
           --image icaroalb1/mottu-sprint-4:mottu-api \
           --cpu 1 \
           --memory 1.5 \
-          --ports 8080 \
+          --ports 8081 \
+          --os-type Linux \
           --dns-name-label mottu-api-demo \
           --registry-login-server docker.io \
+          --registry-username icaroalb1 \
+          --registry-password $(dockerhub_password) \
           --restart-policy Always
+        
       displayName: "Deploy ACI"
