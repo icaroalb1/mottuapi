@@ -47,7 +47,14 @@ jobs:
       displayName: "Build & Push Docker"
 
     - script: |
-        az container create -g $(RESOURCE_GROUP) --name myapp \
-        --image $(ACR_NAME).azurecr.io/myimage:latest \
-        --cpu 1 --memory 1.5 --ports 80 --dns-name-label myuniqueapp
+        az container create 
+          --resource-group rg-sprint-4 \
+          --name mottu-api-container \
+          --image icaroalb1/mottu-sprint-4:mottu-api \
+          --cpu 1 \
+          --memory 1.5 \
+          --ports 8080 \
+          --dns-name-label mottu-api-demo \
+          --registry-login-server docker.io \
+          --restart-policy Always
       displayName: "Deploy ACI"
