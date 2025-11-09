@@ -39,7 +39,7 @@ jobs:
     - script: |
         docker login -u $(dockerhub_username) -p $(dockerhub_password)
         docker build -t mottu-api .
-        docker push icaroalb1/mottu-api:latest
+        docker push mottu-api:latest
       displayName: "Build & Push Docker"
 
     - script: |
