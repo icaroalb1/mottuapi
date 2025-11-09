@@ -40,7 +40,7 @@ jobs:
         docker login -u $(dockerhub_username) -p $(dockerhub_password)
         docker build -t mottu-api .
         docker tag mottu-api $(dockerhub_username)/mottu-api:latest
-        docker push $(dockerhub_username)mottu-api:latest
+        docker push $(dockerhub_username)/mottu-api:latest
       displayName: "Build & Push Docker"
 
     - script: |
