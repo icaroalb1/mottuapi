@@ -47,6 +47,8 @@ jobs:
 
     - script: |
 
+        az login --service-principal -u $(login_user_cli) -p (login_password_cli) --tenant $(login_tenant_cli)
+
         az provider register --namespace Microsoft.ContainerInstance
         
         az container create \
@@ -60,7 +62,7 @@ jobs:
           --dns-name-label mottu-api-demo \
           --registry-login-server docker.io \
           --registry-username icaroalb1 \
-          --registry-password $(dockerhub_password) \
+          --registry-password $(dockerhub_password) 
           --restart-policy Always
         
       displayName: "Deploy ACI"
