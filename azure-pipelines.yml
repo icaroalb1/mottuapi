@@ -63,6 +63,5 @@ jobs:
           --registry-login-server docker.io \
           --registry-username icaroalb1 \
           --registry-password $(dockerhub_password) 
-          --restart-policy Always
         
       displayName: "Deploy ACI"
