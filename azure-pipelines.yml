@@ -47,7 +47,7 @@ jobs:
 
     - script: |
 
-        az login --service-principal -u $(login_user_cli) -p (login_password_cli) --tenant $(login_tenant_cli)
+        az login --service-principal -u $(login_user_cli) -p $(login_password_cli) --tenant $(login_tenant_cli)
 
         az provider register --namespace Microsoft.ContainerInstance
         
