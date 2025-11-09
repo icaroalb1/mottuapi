@@ -39,7 +39,7 @@ jobs:
     - script: |
         export dockerhub_password=$(dockerhub_password)
         printenv | grep dockerhub_password
-        # docker login --username icaroalb1 --password $(dockerhub_password)
+        docker login -u icaroalb1 -p $(dockerhub_password)
         # docker build -t mottu-api .
         # docker tag mottu-api $(dockerhub_username)/mottu-api:latest
         # docker push icaroalb1/mottu-sprint-4:mottu-api
