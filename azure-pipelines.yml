@@ -58,10 +58,11 @@ jobs:
           --cpu 1 \
           --memory 1.5 \
           --ports 8081 \
+          --environment-variables SPRING_DATASOURCE_URL=$(db_url_azure) SPRING_DATASOURCE_USERNAME=$(db_user_azure) SPRING_DATASOURCE_PASSWORD=$(db_password_azure) \
           --os-type Linux \
           --dns-name-label mottu-api-demo \
           --registry-login-server docker.io \
           --registry-username icaroalb1 \
-          --registry-password $(dockerhub_password) 
+          --registry-password $(dockerhub_password)
         
       displayName: "Deploy ACI"
