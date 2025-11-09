@@ -25,7 +25,9 @@ jobs:
           export db_url_azure=$(db_url_azure)
           export db_user_azure=$(db_user_azure)
           export db_password_azure=$(db_password_azure)
-          printenv | grep db_ 
+          export dockerhub_username=$(dockerhub_username)
+          export dockerhub_password=$(dockerhub_password) 
+
 
     - script: |
         mvn clean package
@@ -35,10 +37,9 @@ jobs:
       displayName: "Run Tests"
 
     - script: |
-        az login --service-principal -u $(AZURE_USER) -p $(AZURE_PASS) --tenant $(AZURE_TENANT)
-        az acr login --name $(ACR_NAME)
-        docker build -t $(ACR_NAME).azurecr.io/myimage:latest .
-        docker push $(ACR_NAME).azurecr.io/myimage:latest
+        docker login -u $(dockerhub_username) -p $(dockerhub_password)
+        docker build -t mottu-api .
+        docker push icaroalb1/mottu-api:latest
       displayName: "Build & Push Docker"
 
     - script: |
