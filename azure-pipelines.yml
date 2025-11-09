@@ -36,10 +36,10 @@ jobs:
       displayName: "Run Tests"
 
     - script: |
-        export dockerhub_password=$(dockerhub_password) 
-        docker login --username icaroalb1 --password $(dockerhub_password)
+        # export dockerhub_password=$(dockerhub_password) 
+        # docker login --username icaroalb1 --password $(dockerhub_password)
         docker build -t mottu-api .
-        docker tag mottu-api $(dockerhub_username)/mottu-api:latest
+        docker tag mottuapi-app:latest icaroalb1/mottu-api:latest
         docker push icaroalb1/mottu-sprint-4:mottu-api
       displayName: "Build & Push Docker"
 
